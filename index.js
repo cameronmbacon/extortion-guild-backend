@@ -1,8 +1,12 @@
 const express = require('express');
-const passport = require('passport');
+const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
+const passport = require('passport');
 const keys = require('./config/keys');
+require('./models/User');
 require('./services/passport');
+
+mongoose.connect(keys.MONGODB_URI, { useNewUrlParser: true }, () => console.log('Connected to MongoDB via mongoose.js'));
 
 const app = express();
 

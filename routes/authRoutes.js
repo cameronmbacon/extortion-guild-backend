@@ -9,7 +9,7 @@ module.exports = (app) => {
         '/auth/bnet/callback',
         passport.authenticate('bnet'),
         (req, res) => {
-            res.redirect('/api/current_user');
+            res.redirect('/');
         }
     );
 
@@ -19,6 +19,6 @@ module.exports = (app) => {
     });
 
     app.get('/api/current_user', (req, res) => {
-        res.send(req.user ? req.user : res.redirect('/'));
+        res.send(req.user);
     });
 };
