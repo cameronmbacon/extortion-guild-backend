@@ -24,17 +24,29 @@ passport.use(
             proxy: true
         },
         async (accessToken, refreshToken, profile, done) => {
-            const existingUser = await User.findOne({ bnetId: profile.id })
-            if (existingUser) {
-                return done(null, existingUser);
-            }
+            User.findOne({ bnetId: profile.id })
+            .then((data) => {
+                if (data._t !== accessToken) {
+                    User.findByIdAndUpdate(data.bnetId, { $set: { _t: accessToken }}).save()
+                }
+            })
+            .then(updatedUser => {
+                if (updatedUser) {
+                    return done(null, updatedUser);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
             
             const user = await new User(
                 { 
                     bnetId: profile.id,
                     sub: profile.sub,
                     battletag: profile.battletag,
-                    provider: profile.provider
+                    provider: profile.provider,
+                    _t: accessToken
                 }
             ).save();
             done(null, user);
