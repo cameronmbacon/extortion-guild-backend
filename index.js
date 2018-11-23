@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send({ hello: 'guild! '});
+    res.send({ hello: 'guild!', from: 'Heroku!' });
 });
 
 const PORT = process.env.PORT || 3000;
