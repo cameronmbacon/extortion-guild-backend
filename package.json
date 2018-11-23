@@ -1,0 +1,19 @@
+{
+  "name": "extortion-guild-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cameronmbacon/extortion-guild-backend.git"
+  },
+  "author": "Cameron Bacon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cameronmbacon/extortion-guild-backend/issues"
+  },
+  "homepage": "https://github.com/cameronmbacon/extortion-guild-backend#readme"
+}
